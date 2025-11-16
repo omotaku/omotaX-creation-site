@@ -1,0 +1,115 @@
+/* 基本設定 */
+:root {
+    --bg-color: #fdfaf4; /* 古書の紙のようなクリーム色 */
+    --text-color: #4a443d; /* 濃いセピア色 */
+    --primary-color: #3b4b62; /* 知的なネイビー */
+    --accent-color: #b9935d; /* 上品なゴールド */
+    --font-base: 'Noto Sans JP', sans-serif;
+    --font-serif: 'Shippori Mincho', serif; /* 上品な明朝体 */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--font-base);
+    background-color: var(--bg-color); /* サイト本体と同じ背景色に */
+    color: var(--text-color);
+}
+
+/* ▼▼▼ ローディング画面のスタイル ▼▼▼ */
+#loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 100;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+}
+.loader-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: normal;
+}
+/* bodyにloadedクラスがついたらローダーを消す */
+body.loaded #loader {
+    opacity: 0;
+    visibility: hidden; /* 操作できないように */
+}
+/* ▲▲▲ ローディング画面のスタイル ▲▲▲ */
+
+
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    /* ローダーが消え始めてから、サイトがゆっくり表示される */
+    transition: opacity 2s 0.5s ease-in-out;
+}
+/* bodyにloadedクラスがついたらサイト本体を表示 */
+body.loaded #container {
+    opacity: 1;
+}
+
+a { color: var(--primary-color); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ヘッダー */
+.header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #e9e4d9; }
+.header-nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+.header-nav li a { font-family: var(--font-serif); margin-left: 40px; }
+
+/* メインビジュアル */
+.hero { padding: 50px; }
+.hero-image-container { border: 10px solid #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+.hero-catchphrase { text-align: center; font-family: var(--font-serif); font-size: 1.5rem; margin-top: 50px; color: var(--primary-color); }
+.hero-catchphrase p { margin: 5px 0; }
+
+/* コンテンツセクション */
+.content-section { padding: 80px 50px; }
+.section-title { font-family: var(--font-serif); font-size: 2.5rem; text-align: center; margin: 0 0 50px; font-weight: normal; color: var(--primary-color); position: relative; }
+.section-title::before, .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); background-color: var(--accent-color); }
+.section-title::before { width: 80px; height: 2px; }
+.section-title::after { width: 6px; height: 6px; border-radius: 50%; bottom: -17px; }
+.section-text { font-size: 1rem; line-height: 2.2; text-align: center; }
+
+/* CHARACTERセクション */
+.character-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-top: 80px; }
+.character-card { text-align: center; }
+.character-image { border: 1px solid #e9e4d9; padding: 10px; background-color: #fff; margin-bottom: 20px; }
+.character-profile { padding: 0 10px; }
+.character-name-en { font-family: var(--font-serif); color: var(--accent-color); margin-bottom: 5px; }
+.character-profile h3 { font-family: var(--font-serif); font-size: 1.8rem; font-weight: normal; margin: 0 0 15px; color: var(--primary-color); }
+.character-profile p { text-align: left; line-height: 1.8; }
+
+/* KEYWORDセクション */
+.keyword-box { max-width: 700px; margin: 0 auto; border: 1px solid #e9e4d9; padding: 30px; text-align: center; }
+.keyword-box h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; margin: 0 0 15px; }
+
+/* フッター */
+.footer { text-align: center; padding: 40px; color: #b3aca2; border-top: 1px solid #e9e4d9; margin-top: 50px; }
+
+/* アニメーション */
+.fade-in { opacity: 0; transform: translateY(40px); transition: opacity 1.2s, transform 1.2s; }
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+/* スマートフォン対応 */
+@media (max-width: 1024px) {
+    .character-grid { grid-template-columns: 1fr; }
+    .character-card { max-width: 400px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+    .header { flex-direction: column; padding: 20px; }
+    .header-logo { margin-bottom: 15px; }
+    .header-nav li a { margin: 0 15px; }
+    .hero { padding: 20px; }
+    .hero-catchphrase { font-size: 1.2rem; }
+    .content-section { padding: 60px 20px; }
+    .section-title { font-size: 2rem; }
+}
