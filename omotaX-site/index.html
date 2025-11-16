@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>omotaX creation | Official Site</title>
+    <meta name="description" content="ゲーム・アニメ制作チーム「omotaX creation」の公式サイト。心、揺さぶる物語を。">
+
+    <!-- Google Fontsの読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ▼▼▼ ローディング画面 ▼▼▼ -->
+    <div id="loader">
+        <div class="loader-content">
+            <svg id="logo-drawing" width="300" height="60" viewBox="0 0 300 60">
+                <path d="M10 40 L20 20 L30 40 M20 20 L20 40 M40 20 L55 20 L40 40 L55 40 M65 40 C80 10, 90 10, 105 40 M115 20 L115 40 M120 40 L135 20 L135 40 M145 20 L150 20 L145 40 M155 20 L165 40 M160 30 L170 30 M180 35 A10 10 0 1 1 180 34.9 M190 40 L190 20 M200 40 A10 10 0 1 1 200 39.9 M210 20 L220 40 M215 30 L225 30 M235 20 L235 40 M245 40 C245 20, 255 20, 255 40 M265 20 L265 40 M270 40 L285 20 L285 40"/>
+            </svg>
+            <!-- ▼▼▼ プログレスバーを追加 ▼▼▼ -->
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <!-- ▲▲▲ プログレスバーを追加 ▲▲▲ -->
+        </div>
+    </div>
+    <!-- ▲▲▲ ローディング画面 ▲▲▲ -->
+
+    <div id="container">
+        <header class="header">
+            <a href="#" class="header-logo">omotaX creation</a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#works">Works</a></li>
+                    <li><a href="#creators">Creators</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>心、揺さぶる物語を。</h1>
+                <p>私たちは、ゲームやアニメーションを通じて<br>人の心に残る物語を創り出すクリエイティブチームです。</p>
+            </section>
+            
+            <section id="works" class="content-section">
+                <h2>Works</h2>
+                <div class="works-grid">
+                    <a href="../gakujutsu-site/no.html" class="work-card">
+                        <div class="work-image"><img src="https://placehold.jp/600x400.png?text=がくじゅつ！" alt="がくじゅつ！"></div>
+                        <h3>がくじゅつ！</h3>
+                        <p>男性向け恋愛ゲーム</p>
+                    </a>
+                    <a href="../main_game/stage_select.html" class="work-card">
+                        <div class="work-image"><img src="../omotaX-site/sunami.png" alt="すなみアドベンチャー"></div>
+                        <h3>すなみアドベンチャー</h3>
+                        <p>横スクロールアクションゲーム</p>
+                    </a>
+                </div>
+            </section>
+
+            <section id="creators" class="content-section bg-light">
+                <h2>Creators</h2>
+                <div class="creators-grid">
+                    <div class="creator-card">
+                        <img src="https://placehold.jp/400x400.png?text=OMOTAKU" alt="オモタクのアイコン">
+                        <h3>オモタク</h3>
+                        <p class="creator-role">イラストレーター</p>
+                        <p>イラストで、物語の世界を彩ります。キャラクターデザインから一枚絵まで、ビジュアル全般を担当。</p>
+                    </div>
+                    <div class="creator-card">
+                        <img src="https://placehold.jp/400x400.png?text=ONIGIRINGO" alt="おにぎりんごのアイコン">
+                        <h3>おにぎりんご</h3>
+                        <p class="creator-role">シナリオライター</p>
+                        <p>言葉で、物語の骨格を作ります。キャラクターたちの会話やストーリーの執筆を担当。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-section">
+                <h2>Contact</h2>
+                <p class="section-lead">ご意見、ご感想、お仕事のご依頼など<br>お気軽にご連絡ください。</p>
+                <div class="contact-buttons">
+                    <a href="https://x.com/omotax_creation" target="_blank" class="button">Official X</a>
+                    <a href="mailto:omotakuomotaxcreation@gmail.com" class="button">E-Mail</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 omotaX creation. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* 基本設定 */
+:root {
+    --bg-color: #f8f8f8; /* オフホワイト */
+    --bg-light-color: #ffffff; /* 白 */
+    --text-color: #333333; /* ダークグレー */
+    --accent-color: #00a8a8; /* クリエイティブなティールブルー */
+    --font-base: 'Noto Sans JP', sans-serif;
+    --font-serif: 'Shippori Mincho', serif; /* 上品な明朝体 */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--font-base);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#container {
+    opacity: 0; /* 最初は非表示 */
+    transition: opacity 1s 0.5s ease-in-out; /* 0.5秒遅れて表示 */
+}
+body.loaded #container {
+    opacity: 1;
+}
+
+a { color: var(--accent-color); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.7; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ▼▼▼ ローディング画面 ▼▼▼ */
+#loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 1s ease-out;
+}
+body.loaded #loader {
+    opacity: 0;
+    pointer-events: none;
+}
+#logo-drawing path {
+    stroke: var(--text-color);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-logo 3s ease-in-out forwards;
+}
+@keyframes draw-logo {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+/* ▼▼▼ プログレスバーのスタイルを追加 ▼▼▼ */
+.progress-bar {
+    width: 300px; /* ロゴの幅と合わせる */
+    height: 4px;
+    background-color: #eee;
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden; /* 内側のバーがはみ出ないように */
+}
+.progress-bar-inner {
+    width: 0;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    /* ロゴ描画アニメーションと時間を合わせる */
+    animation: progress-load 3s ease-in-out forwards;
+}
+@keyframes progress-load {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+/* ▲▲▲ プログレスバーのスタイルを追加 ▲▲▲ */
+/* ▲▲▲ ローディング画面 ▲▲▲ */
+
+
+/* ヘッダー */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(248, 248, 248, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+    position: sticky; top: 0; z-index: 10;
+}
+.header-logo { font-size: 1.5rem; font-weight: bold; }
+.header-nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+.header-nav li { margin-left: 30px; }
+
+/* メインビジュアル (Hero) */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+}
+.hero h1 { font-family: var(--font-serif); font-size: 2.8rem; margin: 0 0 20px; }
+.hero p { font-size: 1.1rem; line-height: 1.8; color: #666; }
+
+/* コンテンツセクション */
+.content-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px;
+}
+.content-section.bg-light { background-color: var(--bg-light-color); }
+.content-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 60px;
+    position: relative;
+    padding-bottom: 15px;
+}
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+/* WORKSセクション */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+.work-card {
+    color: var(--text-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.work-image {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.work-card h3 { font-size: 1.5rem; margin: 0 0 5px; }
+.work-card p { margin: 0; color: #666; }
+
+/* CREATORSセクション */
+.creators-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.creator-card { text-align: center; }
+.creator-card img { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 20px; }
+.creator-card h3 { font-size: 1.5rem; margin: 0 0 5px; }
+.creator-role { color: #666; margin-bottom: 15px; }
+
+/* CONTACTセクション */
+.section-lead { text-align: center; margin-bottom: 40px; font-size: 1.1rem; }
+.contact-buttons { display: flex; justify-content: center; gap: 20px; }
+.button {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+.button:hover { color: #fff; opacity: 0.8; }
+
+/* フッター */
+.footer { text-align: center; padding: 50px 20px; color: #aaa; }
+
+/* スマートフォン対応 */
+@media (max-width: 768px) {
+    .header { flex-direction: column; }
+    .header-logo { margin-bottom: 15px; }
+    .hero h1 { font-size: 2rem; }
+    .content-section { padding: 80px 20px; }
+    .creators-grid { grid-template-columns: 1fr; }
+}
